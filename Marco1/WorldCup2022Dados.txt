@@ -2,30 +2,30 @@
 	
 number	name			nickname	height	weight 		position 			currentClub					birthdate
 
-01 		Mário Rui 		Rui 	1.91	100.0		goalkeeper			        Admiralteyets Leningrad		        12/11/1994
+01 		Mário Rui 		Rui 	1.91	100.0		goalkeeper			Admiralteyets Leningrad		        12/11/1994
 02 		João Cancelo 	        Cancelo	1.80    100.0		right-sided		        Arsenal		                        06/10/1994
-03 		Rúben Dias 		Dias    1.74	60.0		left-sided		Barcelona				01/11/1993
+03 		Rúben Dias 		Dias    1.74	60.0		left-sided		        Barcelona				01/11/1993
 04 		Diogo Dalot		Dalot	1.84	80.0		wing				Bayern				        24/04/1993
 05 		Tiago Djaló	 	Djaló	1.74	80.0		defender			Chelsea				        26/03/1992
 06 		Nuno Mendes		Mendes	1.75	70.0		wing			        Internazionale			        15/05/1994
 07 		Danilo Pereira	        Danilo	1.78	80.0		midside			        Juventus				13/05/1993
 08 		Bruno Fernandes 	Bruno	1.93	90.0		attacker 		        Juventus				12/02/1994
-09 		William Carvalho       Carvalho 1.71	60.0		attacker		Liverpool				17/09/1992
-10 		João Mário 		João 	1.88	75.0	        	wing                Milan 				        02/07/1994
-11 		Bernardo Silva	       Bernardo 1.86	75.0		midside		   liverpool				31/06/1995
+09 		William Carvalho       Carvalho 1.71	60.0		attacker		        Liverpool				17/09/1992
+10 		João Mário 		João 	1.88	75.0	        wing                            Milan 				        02/07/1994
+11 		Bernardo Silva	       Bernardo 1.86	75.0		midside		                liverpool				31/06/1995
 
 3 membros da comissão técnica
 
-name	 		nickname	      function	         birthdate
+name	 		nickname      function	          birthdate
 
 Rafael Leão		Leão          assistant           31/02/1994
 João Félix		Félix	      Main couch          08/08/1995
-Gonçalo Ramos	        Ramos	      personal trainer	 28/07/1993
+Gonçalo Ramos	        Ramos	      personal trainer	  28/07/1993
 
 
 2 dirigentes 
 
-name		        tell1	tell2	 e-mail
+name		        tell1	        tell2	         e-mail
 
 Daniel de Paula		996942087	988317001	 daniel@dirigente.com.br
 Luiz Herique Martendal	997731104	995462178	 luiz@dirigente.com.br
