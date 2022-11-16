@@ -1,4 +1,3 @@
-package module_portugal;
 
 import java.awt.Image;
 import java.io.EOFException;
@@ -14,6 +13,7 @@ public class Portugal implements NationalTeamInfos{
 	private ArrayList<Jogador> players = new ArrayList<>();
 	private ArrayList<ComissaoTecnica> commission = new ArrayList<>();
 	private ArrayList<Dirigente> leaders = new ArrayList<>();
+	private Stats stats = new Stats();
 	
 	public Portugal() {}
 
@@ -126,8 +126,7 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public NationalTeamStats getStatsResponsible() {
-		NationalTeamStats n = null;
-		return n;
+		return this.stats;
 	}
 	
 	public void setDados() throws FileNotFoundException, IOException {

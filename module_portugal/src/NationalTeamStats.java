@@ -1,4 +1,4 @@
-package module_portugal;
+
 
 /**
  * Interface que retorna estat�sticas sobre as consultas efetuadas por meio da interface NationalTeamInfos a uma sele��o participante da Copa do Mundo 2022.
@@ -7,11 +7,11 @@ package module_portugal;
  * 
  * @author Marcel Hugo e turma de POO 22/2 (BCC)
  *
- * @version 1.0.0
+ * @version 1.0.1
  *
  */
 
-public interface NationalTeamStats{
+public interface NationalTeamStats {
 	/**
 	 * M�todo para retornar a quantidade de vezes que os m�todos que foram chamados externamente (interface NationalTeamInfos) em todas as execu��es da classe representado a sele��o participante.
 	 * @return int - quantidade de chamadas de todos os m�todos.
@@ -25,6 +25,6 @@ public interface NationalTeamStats{
 	 * @param number (int) - n�mero do jogador
 	 * @return int - quantidade de vezes que o m�todo getPlayer foi acionado para o jogador indicado.
 	*/
-	String getHowManyCallsToPlayer(int number);
+	int getHowManyCallsToPlayer(int number);
 
 }
