@@ -11,7 +11,7 @@ package module_portugal;
  *
  */
 
-public interface NationalTeamStats {
+public interface NationalTeamStats{
 	/**
 	 * M�todo para retornar a quantidade de vezes que os m�todos que foram chamados externamente (interface NationalTeamInfos) em todas as execu��es da classe representado a sele��o participante.
 	 * @return int - quantidade de chamadas de todos os m�todos.

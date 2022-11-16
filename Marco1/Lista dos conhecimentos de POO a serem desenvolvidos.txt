@@ -1,0 +1,5 @@
+1° Na interface NationalTeamStats há um método retornando um objeto de NationalTeamInfos. Ainda não sabemos como retornar esse objeto e como manipular o mesmo, na classe "Portugal".
+
+2° Formatação de arquivo json: Ainda é precisa estudar sobre.
+
+3° Como gerar um bytecode .jar
