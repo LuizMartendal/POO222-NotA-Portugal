@@ -11,13 +11,13 @@ public class Jogador implements Serializable{
 	private int number;
 	private String name;
 	private String nickName;
-	private double height;
+	private int height;
 	private double weight;
 	private LocalDate birthDate;
 	private String position;
 	private String currentClub;
 	
-	public Jogador (int number, String name, String nickName, double height, double weight,
+	public Jogador (int number, String name, String nickName, int height, double weight,
 					LocalDate birthDate, String position, String currentClub) {
 		this.setNumber(number);
 		this.setName(name);
@@ -74,14 +74,14 @@ public class Jogador implements Serializable{
 		}	
 	}
 
-	public double getHeight() {
+	public int getHeight() {
 		if (this.height > 0) {
 			return height;
 		}
 		throw new IllegalArgumentException("Invalid height.");
 	}
 
-	public void setHeight(double height) {
+	public void setHeight(int height) {
 		if (height > 0) {
 			this.height = height;
 		}else {

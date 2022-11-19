@@ -1,12 +1,16 @@
 
 import java.awt.Image;
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 public class Portugal implements NationalTeamInfos{
 	private String name = "Portugal";
@@ -96,32 +100,83 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public String getPlayer(int number) {
-		// TODO Auto-generated method stub
-		return null;
+		String formJson = null;
+		if (players.isEmpty()) {
+			try {
+				this.setDados();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		boolean i = false;
+		for (Jogador j: players) {
+			if (j.getNumber() == number) {
+				i = true;
+			}
+		}
+		if (i) {
+			Jogador player = players.get(number - 1);
+			int numb = player.getNumber();
+			String name = player.getName();
+			String nickname = player.getNickName();
+			int height = player.getHeight();
+			double weight = player.getWeight();
+			LocalDate birthDate = player.getBirthDate();
+			String position = player.getPosition();
+			String currentClub = player.getCurrentClub();
+			
+			formJson = "{number:\"" +numb+ "\", name:\"" +name+  "\", nickname:\"" +nickname+ "\", height:" +height+ ", weight:" +weight+ ", birthDate:\"" +birthDate+ "\", position:\"" +position+ "\", currentClub:\"" +currentClub+ "\"}";
+			
+			return formJson;
+		}
+		
+	    return formJson;
 	}
 
 	@Override
 	public String getPressOfficerContacts() {
-		// TODO Auto-generated method stub
-		return null;
+		String formJson = null;
+		if (leaders.isEmpty()) {
+			try {
+				this.setDados();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		Dirigente leader = leaders.get(0);
+		String name = leader.getName();
+		String tel1 = leader.getTell1();
+		String tel2 = leader.getTell2();
+		String email = leader.getEmail();
+		formJson = "{name:\"" +name+ "\", tel1:\"" +tel1+ "\", tel2:\"" +tel2+ "\", emailAccount:\"" +email+ "\"}";
+		return formJson;
 	}
 
 	@Override
 	public String getCountryName() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
 	@Override
 	public Image getFlagImage() {
-		// TODO Auto-generated method stub
-		return null;
+		Image i = null;
+		try {
+			i = ImageIO.read(new File("bandeira.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
 	}
 
 	@Override
 	public Path getTechnicalCommittee() {
-		// TODO Auto-generated method stub
-		return null;
+		File f = new File("comissaoTecnica.json");
+		Path path = f.toPath();
+		return path;
 	}
 
 	@Override
@@ -130,7 +185,7 @@ public class Portugal implements NationalTeamInfos{
 	}
 	
 	public void setDados() throws FileNotFoundException, IOException {
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jogadores-dados.json"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jogadores-dados.dat"))){
 			while (true) {
 				this.players.add((Jogador)ois.readObject()); 
 			}
@@ -141,7 +196,7 @@ public class Portugal implements NationalTeamInfos{
 			System.out.println("Fim do arquivo.");
 		}
 		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("comissaoTecnica-dados.json"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("comissaoTecnica-dados.dat"))){
 			while (true) {
 				this.commission.add((ComissaoTecnica)ois.readObject()); 
 			}
@@ -152,7 +207,7 @@ public class Portugal implements NationalTeamInfos{
 			System.out.println("Fim do arquivo.");
 		}
 		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dirigentes-dados.json"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dirigentes-dados.dat"))){
 			while (true) {
 				this.leaders.add((Dirigente)ois.readObject()); 
 			}
