@@ -1,8 +1,8 @@
-import java.util.ArrayList;
+package module_portugal;
+import fifa.NationalTeamStats;
 
 public class Stats implements NationalTeamStats{
-	private int questions;
-	private ArrayList<Integer> callsToPlayer = new ArrayList<>();
+	
 	@Override
 	public int getHowManyQuestions() {
 		// TODO Auto-generated method stub

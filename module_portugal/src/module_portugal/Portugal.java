@@ -1,4 +1,4 @@
-
+package module_portugal;
 import java.awt.Image;
 import java.io.EOFException;
 import java.io.File;
@@ -12,18 +12,17 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import fifa.NationalTeamInfos;
+import fifa.NationalTeamStats;
+
 public class Portugal implements NationalTeamInfos{
-	private String name = "Portugal";
+	private static String name = "Portugal";
 	private ArrayList<Jogador> players = new ArrayList<>();
 	private ArrayList<ComissaoTecnica> commission = new ArrayList<>();
 	private ArrayList<Dirigente> leaders = new ArrayList<>();
 	private Stats stats = new Stats();
 	
 	public Portugal() {}
-
-	public String getName() {
-		return this.name;
-	}
 	
 	@Override
 	public int getHowManyMembers() {
@@ -157,7 +156,7 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public String getCountryName() {
-		return this.name;
+		return Portugal.name;
 	}
 
 	@Override
@@ -185,7 +184,7 @@ public class Portugal implements NationalTeamInfos{
 	}
 	
 	public void setDados() throws FileNotFoundException, IOException {
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jogadores-dados.dat"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jogadores-dados.txt"))){
 			while (true) {
 				this.players.add((Jogador)ois.readObject()); 
 			}
@@ -196,7 +195,7 @@ public class Portugal implements NationalTeamInfos{
 			System.out.println("Fim do arquivo.");
 		}
 		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("comissaoTecnica-dados.dat"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("comissaoTecnica-dados.txt"))){
 			while (true) {
 				this.commission.add((ComissaoTecnica)ois.readObject()); 
 			}
@@ -207,7 +206,7 @@ public class Portugal implements NationalTeamInfos{
 			System.out.println("Fim do arquivo.");
 		}
 		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dirigentes-dados.dat"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dirigentes-dados.txt"))){
 			while (true) {
 				this.leaders.add((Dirigente)ois.readObject()); 
 			}

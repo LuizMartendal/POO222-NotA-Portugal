@@ -1,4 +1,4 @@
-
+package module_portugal;
 import java.io.Serializable;
 
 public class Dirigente implements Serializable{
