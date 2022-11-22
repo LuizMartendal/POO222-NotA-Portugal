@@ -184,7 +184,7 @@ public class Portugal implements NationalTeamInfos{
 	}
 	
 	public void setDados() throws FileNotFoundException, IOException {
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jogadores-dados.txt"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jogadores-dados.dat"))){
 			while (true) {
 				this.players.add((Jogador)ois.readObject()); 
 			}
@@ -195,7 +195,7 @@ public class Portugal implements NationalTeamInfos{
 			System.out.println("Fim do arquivo.");
 		}
 		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("comissaoTecnica-dados.txt"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("comissaoTecnica-dados.dat"))){
 			while (true) {
 				this.commission.add((ComissaoTecnica)ois.readObject()); 
 			}
@@ -206,7 +206,7 @@ public class Portugal implements NationalTeamInfos{
 			System.out.println("Fim do arquivo.");
 		}
 		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dirigentes-dados.txt"))){
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dirigentes-dados.dat"))){
 			while (true) {
 				this.leaders.add((Dirigente)ois.readObject()); 
 			}
