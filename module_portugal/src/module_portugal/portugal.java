@@ -1,11 +1,13 @@
 package module_portugal;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,17 +17,23 @@ import javax.imageio.ImageIO;
 import fifa.NationalTeamInfos;
 import fifa.NationalTeamStats;
 
-public class Portugal implements NationalTeamInfos{
+public class portugal implements NationalTeamInfos{
 	private static String name = "Portugal";
 	private ArrayList<Jogador> players = new ArrayList<>();
 	private ArrayList<ComissaoTecnica> commission = new ArrayList<>();
 	private ArrayList<Dirigente> leaders = new ArrayList<>();
 	private Stats stats = new Stats();
 	
-	public Portugal() {}
+	public portugal() {}
 	
 	@Override
 	public int getHowManyMembers() {
+		try {
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if (this.commission.isEmpty()) {
 			try {
 				this.setDados();
@@ -39,6 +47,12 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public int getOldestPlayer() {
+		try {
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if (this.players.isEmpty()) {
 			try {
 				this.setDados();
@@ -60,6 +74,12 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public int getYoungestPlayer() {
+		try {
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if (this.players.isEmpty()) {
 			try {
 				this.setDados();
@@ -81,6 +101,12 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public double getAverageAge() {
+		try {
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if (players.isEmpty()) {
 			try {
 				this.setDados();
@@ -99,6 +125,13 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public String getPlayer(int number) {
+		try {
+			stats.addHowManyQuestions();
+			stats.addHowManyCallsToPlayer(number);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		String formJson = null;
 		if (players.isEmpty()) {
 			try {
@@ -135,6 +168,12 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public String getPressOfficerContacts() {
+		try {
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		String formJson = null;
 		if (leaders.isEmpty()) {
 			try {
@@ -156,35 +195,67 @@ public class Portugal implements NationalTeamInfos{
 
 	@Override
 	public String getCountryName() {
-		return Portugal.name;
+		try {
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return portugal.name;
 	}
 
 	@Override
 	public Image getFlagImage() {
-		Image i = null;
 		try {
-			i = ImageIO.read(new File("bandeira.jpg"));
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		BufferedImage bi = null;
+		try {
+			bi = ImageIO.read(getClass().getResource("/img_portugal/bandeira.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return i;
+		return bi;
 	}
 
 	@Override
 	public Path getTechnicalCommittee() {
-		File f = new File("comissaoTecnica.json");
-		Path path = f.toPath();
+		try {
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		URL url = getClass().getResource("/dados_portugal/comissaoTecnica.json");
+		File file = null;
+		try {
+			file = new File(url.toURI().getPath());
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Path path = file.toPath();
 		return path;
 	}
 
 	@Override
-	public NationalTeamStats getStatsResponsible() {
+	public NationalTeamStats getStatsResponsible() { 
+		try {
+			stats.addHowManyQuestions();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		return this.stats;
 	}
 	
 	public void setDados() throws FileNotFoundException, IOException {
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("jogadores-dados.dat"))){
+		try {
+			ObjectInputStream ois = new ObjectInputStream(getClass().getResourceAsStream("/dados_portugal/jogadores-dados.dat"));
 			while (true) {
 				this.players.add((Jogador)ois.readObject()); 
 			}
@@ -195,7 +266,8 @@ public class Portugal implements NationalTeamInfos{
 			System.out.println("Fim do arquivo.");
 		}
 		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("comissaoTecnica-dados.dat"))){
+		try {
+			ObjectInputStream ois = new ObjectInputStream(getClass().getResourceAsStream("/dados_portugal/comissaoTecnica-dados.dat"));
 			while (true) {
 				this.commission.add((ComissaoTecnica)ois.readObject()); 
 			}
@@ -206,7 +278,8 @@ public class Portugal implements NationalTeamInfos{
 			System.out.println("Fim do arquivo.");
 		}
 		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dirigentes-dados.dat"))){
+		try {
+			ObjectInputStream ois = new ObjectInputStream(getClass().getResourceAsStream("/dados_portugal/dirigentes-dados.dat"));
 			while (true) {
 				this.leaders.add((Dirigente)ois.readObject()); 
 			}
