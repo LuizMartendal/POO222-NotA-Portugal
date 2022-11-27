@@ -4,10 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -230,15 +229,20 @@ public class portugal implements NationalTeamInfos{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		URL url = getClass().getResource("/dados_portugal/comissaoTecnica.json");
-		File file = null;
-		try {
-			file = new File(url.toURI().getPath());
-		} catch (URISyntaxException e) {
+		String c1 = "{name:\"Rafael Leão\", nickname:\"Leão\", role:\"Assistant\", age:28}";
+		String c2 = "{name:\"João Félix\", nickname:\"Félix\", role:\"Main couch\", age:27}";
+		String c3 = "{name:\"Gonçalo Ramos\", nickname:\"Ramos\", role:\"Personal trainer\", age:29}";
+		
+		try (FileWriter fw = new FileWriter("comissaoTecnica_portugal.json");){
+			fw.write(c1);
+			fw.write(c2);
+			fw.write(c3);
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Path path = file.toPath();
+		
+		Path path = new File("comissaoTecnica_portugal.json").toPath();
 		return path;
 	}
 

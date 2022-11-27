@@ -7,6 +7,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/luizm/OneDrive/Estudos/FURB/2 Semestre/POO/Unidade 9/TrabalhoFinal/WorldCup2022.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rique/OneDrive/Estudos/FURB/2 Semestre/POO/Unidade 9/TrabalhoFinal/WorldCup2022.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
