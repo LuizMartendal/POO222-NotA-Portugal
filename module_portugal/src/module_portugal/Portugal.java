@@ -16,14 +16,14 @@ import javax.imageio.ImageIO;
 import fifa.NationalTeamInfos;
 import fifa.NationalTeamStats;
 
-public class portugal implements NationalTeamInfos{
+public class Portugal implements NationalTeamInfos{
 	private static String name = "Portugal";
 	private ArrayList<Jogador> players = new ArrayList<>();
 	private ArrayList<ComissaoTecnica> commission = new ArrayList<>();
 	private ArrayList<Dirigente> leaders = new ArrayList<>();
 	private Stats stats = new Stats();
 	
-	public portugal() {}
+	public Portugal() {}
 	
 	@Override
 	public int getHowManyMembers() {
@@ -200,7 +200,7 @@ public class portugal implements NationalTeamInfos{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		return portugal.name;
+		return Portugal.name;
 	}
 
 	@Override
