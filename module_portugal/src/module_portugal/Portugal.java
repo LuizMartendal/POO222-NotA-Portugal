@@ -242,7 +242,8 @@ public class Portugal implements NationalTeamInfos{
 			e.printStackTrace();
 		}
 		
-		Path path = new File("comissaoTecnica_portugal.json").toPath();
+		String str = new File("comissaoTecnica_portugal.json").getAbsolutePath();
+		Path path = Path.of(str);
 		return path;
 	}
 
