@@ -96,9 +96,7 @@ public class Stats implements NationalTeamStats{
 	public int getHowManyCallsToPlayer(int number) {
 		ArrayList<Integer> callsToPlayer = new ArrayList<>();
 		int amount = 0;
-		if (number <= 0 && number > 11) {
-			return 0;
-		}
+		
 		if (new File("callsToPlayer_portugal.dat").canRead()) {
 			try (FileInputStream fis = new FileInputStream("callsToPlayer_portugal.dat")){
 				DataInputStream dis = new DataInputStream(fis);
@@ -116,6 +114,9 @@ public class Stats implements NationalTeamStats{
 			}
 			int indice = number - 1;
 			amount = callsToPlayer.get(indice);
+		}
+		if (callsToPlayer.contains(number - 1)) {
+			return 0;
 		}
 		return amount;
 	}
